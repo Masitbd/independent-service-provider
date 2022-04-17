@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 import "./Register.css";
 
 const Register = () => {
@@ -10,6 +12,8 @@ const Register = () => {
   const inputName = useRef("");
   const inputEmail = useRef("");
   const inputPass = useRef("");
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
   const navigateRegister = () => {
     navigate("/login");
@@ -19,9 +23,15 @@ const Register = () => {
     e.preventDefault();
     const name = inputName.current.value;
     const email = inputEmail.current.value;
-    const pass = inputPass.current.value;
+    const password = inputPass.current.value;
+    createUserWithEmailAndPassword(email, password);
     // inputEmail.current.value = "";
   };
+
+  if (user) {
+    navigate("/login");
+  }
+
   return (
     <Container className="w-50 mx-auto my-5 p-4 login-container">
       <h1 className="text-success text-center mb-3">Registration New User</h1>
