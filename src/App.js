@@ -7,6 +7,7 @@ import About from "./components/About/About";
 import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import ServiceDetail from "./components/ServiceDetail.js/ServiceDetail";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/About" element={<About />} />
+        <Route path="/servicedetail/:serviceid" element={<ServiceDetail />} />
         <Route path="/login" element={<Login />} />
       </Routes>
       {/*  <Footer /> */}
