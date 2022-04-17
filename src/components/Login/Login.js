@@ -5,24 +5,35 @@ import "./Login.css";
 import { useRef } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from "../../firebase.init";
+import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 const Login = () => {
   const navigate = useNavigate();
   const inputEmail = useRef("");
   const inputPass = useRef("");
-
+  const [user, loading, error] = useAuthState(auth);
+  const [SignInWithGoogle, goolelUser, googleError] = useSignInWithGoogle(auth);
   const navigateRegister = () => {
     navigate("/register");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = inputEmail.current.value;
-    const pass = inputPass.current.value;
+    const password = inputPass.current.value;
+    signInWithEmailAndPassword(auth, email, password);
+
     // inputEmail.current.value = "";
   };
+  if (goolelUser) {
+    navigate("/");
+  }
+
   return (
-    <Container className="w-50 mx-auto my-5 p-5 login-container">
+    <Container className="w-50 mx-auto my-5 p-3 login-container">
       <Form onSubmit={handleSubmit}>
+        <h1 className="text-success text-center mb-2">Login information</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
             ref={inputEmail}
@@ -68,7 +79,12 @@ const Login = () => {
         ></div>
       </div>
       <div className="d-flex flex-column justify-content-center align-items-center ">
-        <button className="w-50 my-2 btn-success">Google SignIn</button>
+        <button
+          onClick={() => SignInWithGoogle()}
+          className="w-50 my-2 btn-success"
+        >
+          Google SignIn
+        </button>
         <button className="w-50 btn-danger">Github SignIn</button>
       </div>
     </Container>
