@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ServiceDetail from "./components/ServiceDetail.js/ServiceDetail";
+import Register from "./components/Register/Register";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/servicedetail/:serviceid" element={<ServiceDetail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       {/*  <Footer /> */}
     </div>

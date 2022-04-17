@@ -3,16 +3,22 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import "./Login.css";
 import { useRef } from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const inputEmail = useRef("");
   const inputPass = useRef("");
 
+  const navigateRegister = () => {
+    navigate("/register");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = inputEmail.current.value;
     const pass = inputPass.current.value;
-    console.log(email, pass);
+    // inputEmail.current.value = "";
   };
   return (
     <Container className="w-50 mx-auto my-5 p-5 login-container">
@@ -35,9 +41,22 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
+
+        <Button className="px-4 mb-2" variant="primary" type="submit">
+          Login
         </Button>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <div className="d-flex">
+            <Form.Text>New to Anne Sofie's clinic?</Form.Text>
+            <Link
+              onClick={navigateRegister}
+              className="text-decoration-none ps-2"
+              to="/register"
+            >
+              Please register here
+            </Link>
+          </div>
+        </Form.Group>
       </Form>
       <div className="login-divider">
         <div
