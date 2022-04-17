@@ -7,7 +7,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../firebase.init";
-import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithGoogle,
+  useSignInWithGithub,
+} from "react-firebase-hooks/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +19,7 @@ const Login = () => {
   const inputPass = useRef("");
   const [user, loading, error] = useAuthState(auth);
   const [SignInWithGoogle, goolelUser, googleError] = useSignInWithGoogle(auth);
+  const [signInWithGithub, githubUser, GithubError] = useSignInWithGithub(auth);
   const navigateRegister = () => {
     navigate("/register");
   };
@@ -26,7 +31,7 @@ const Login = () => {
 
     // inputEmail.current.value = "";
   };
-  if (goolelUser) {
+  if (goolelUser || githubUser) {
     navigate("/");
   }
 
@@ -85,7 +90,9 @@ const Login = () => {
         >
           Google SignIn
         </button>
-        <button className="w-50 btn-danger">Github SignIn</button>
+        <button onClick={() => signInWithGithub()} className="w-50 btn-danger">
+          Github SignIn
+        </button>
       </div>
     </Container>
   );
