@@ -11,6 +11,7 @@ import {
   useAuthState,
   useSignInWithGoogle,
   useSignInWithGithub,
+  useSignInWithFacebook,
 } from "react-firebase-hooks/auth";
 
 const Login = () => {
@@ -20,6 +21,8 @@ const Login = () => {
   const [user, loading, error] = useAuthState(auth);
   const [SignInWithGoogle, goolelUser, googleError] = useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, GithubError] = useSignInWithGithub(auth);
+  const [signInWithFacebook, FacebookUser, FacebookError] =
+    useSignInWithFacebook(auth);
   const navigateRegister = () => {
     navigate("/register");
   };
@@ -31,7 +34,7 @@ const Login = () => {
 
     // inputEmail.current.value = "";
   };
-  if (goolelUser || githubUser) {
+  if (goolelUser || githubUser || FacebookUser) {
     navigate("/");
   }
 
@@ -88,10 +91,16 @@ const Login = () => {
           onClick={() => SignInWithGoogle()}
           className="w-50 my-2 btn-success"
         >
-          Google SignIn
+          Google LogIn
         </button>
         <button onClick={() => signInWithGithub()} className="w-50 btn-danger">
-          Github SignIn
+          Github LogIn
+        </button>
+        <button
+          onClick={() => signInWithFacebook()}
+          className="w-50 my-2 btn-primary"
+        >
+          Facebook SignIn
         </button>
       </div>
     </Container>
