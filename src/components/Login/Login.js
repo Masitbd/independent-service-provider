@@ -5,6 +5,9 @@ import "./Login.css";
 import { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { BsFacebook } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import auth from "../../firebase.init";
 import {
   useAuthState,
@@ -115,16 +118,19 @@ const Login = () => {
           onClick={() => SignInWithGoogle()}
           className="w-50 my-2 btn-success"
         >
+          <span className="text-warning">
+            <BsGoogle />
+          </span>{" "}
           Google LogIn
         </button>
         <button onClick={() => signInWithGithub()} className="w-50 btn-danger">
-          Github LogIn
+          <BsGithub /> Github LogIn
         </button>
         <button
           onClick={() => signInWithFacebook()}
           className="w-50 my-2 btn-primary"
         >
-          Facebook LogIn
+          <BsFacebook /> Facebook LogIn
         </button>
       </div>
     </Container>

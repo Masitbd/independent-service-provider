@@ -9,6 +9,9 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { BsFacebook } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import "./Register.css";
 
 const Register = () => {
@@ -124,16 +127,16 @@ const Register = () => {
           onClick={() => SignInWithGoogle()}
           className="w-50 my-2 btn-success"
         >
-          Google LogIn
+          <BsGoogle /> Google LogIn
         </button>
         <button onClick={() => signInWithGithub()} className="w-50 btn-danger">
-          Github LogIn
+          <BsGithub /> Github LogIn
         </button>
         <button
           onClick={() => signInWithFacebook()}
           className="w-50 my-2 btn-primary"
         >
-          Facebook LogIn
+          <BsFacebook /> Facebook LogIn
         </button>
       </div>
     </Container>

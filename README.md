@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+#Anne Sofie's Clinic
 
 Anne Sofie's Clinic [Live link](https://sunrise-medicare.web.app/).
 
