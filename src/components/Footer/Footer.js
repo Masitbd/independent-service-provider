@@ -3,18 +3,18 @@ import { Col, Container, Row } from "react-bootstrap";
 import { BsFacebook } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
-import { Link } from "react-router-dom";
+
 import "./Foorer.css";
 
 const Footer = () => {
   return (
     <div className="my-3">
-      <Container>
+      <Container className="bg-dark py-2 px-3">
         <Row>
           <Col>
             <h4 className="text-success">Anne Sofie's Clinic</h4>
-            <p className="lh-sm">Phone: 004554871620</p>
-            <p className="lh-sm">Email: info@sunrise.com</p>
+            <p className="lh-sm text-white">Phone: 004554871620</p>
+            <p className="lh-sm text-white">Email: info@sunrise.com</p>
             <a
               className="text-decoration-none bg-success p-2 text-white"
               href="www.facebook.com"
@@ -38,9 +38,30 @@ const Footer = () => {
             </a>
           </Col>
 
-          <Col>2 of 3</Col>
-          <Col>3 of 3</Col>
+          <Col>
+            <h4 className="text-success">Our services</h4>
+            <ul class="list-group list-group-flush py-3">
+              <li class="list-group-item">Transplants</li>
+              <li class="list-group-item">Gastroenterology</li>
+              <li class="list-group-item">Orthopaedics</li>
+              <li class="list-group-item">Spine Care</li>
+              <li class="list-group-item">Cancer Care</li>
+            </ul>
+          </Col>
+          <Col>
+            <h4 className="text-success">Our future plan</h4>
+            <ul class="list-group list-group-flush py-3">
+              <li class="list-group-item">free treatment frist 100 patient</li>
+              <li class="list-group-item">Free medicine up to 200kr</li>
+              <li class="list-group-item">Discount for poor patient</li>
+              <li class="list-group-item">Discount for test</li>
+              <li class="list-group-item">Free healthcare tips</li>
+            </ul>
+          </Col>
         </Row>
+        <p className="text-white text-center py-2">
+          © 2022 Anne Sofie's Clinic
+        </p>
       </Container>
     </div>
   );
