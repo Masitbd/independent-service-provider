@@ -110,7 +110,7 @@ const Login = () => {
           onClick={() => signInWithFacebook()}
           className="w-50 my-2 btn-primary"
         >
-          Facebook SignIn
+          Facebook LogIn
         </button>
       </div>
     </Container>

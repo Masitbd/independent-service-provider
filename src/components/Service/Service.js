@@ -13,11 +13,11 @@ const Service = ({ service }) => {
   return (
     <div className="service-container my-2 container">
       <img src={picture} height="200px" alt="" />
-      <p>{name}</p>
+      <h5 className="text-success mt-1">{name}</h5>
       <p> {description}</p>
       <button
         onClick={() => navigeteoServiceDetail(id)}
-        className="btn btn-danger"
+        className="btn btn-danger mx-1 px-4"
       >
         More
       </button>

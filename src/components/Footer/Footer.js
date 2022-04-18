@@ -11,7 +11,7 @@ const Footer = () => {
     <div className="my-3">
       <Container className="bg-dark py-2 px-3">
         <Row>
-          <Col>
+          <Col md={12} lg={4}>
             <h4 className="text-success">Anne Sofie's Clinic</h4>
             <p className="lh-sm text-white">Phone: 004554871620</p>
             <p className="lh-sm text-white">Email: info@sunrise.com</p>
@@ -38,7 +38,7 @@ const Footer = () => {
             </a>
           </Col>
 
-          <Col>
+          <Col md={12} lg={4}>
             <h4 className="text-success">Our services</h4>
             <ul class="list-group list-group-flush py-3">
               <li class="list-group-item">Transplants</li>
@@ -48,7 +48,7 @@ const Footer = () => {
               <li class="list-group-item">Cancer Care</li>
             </ul>
           </Col>
-          <Col>
+          <Col md={12} lg={4}>
             <h4 className="text-success">Our future plan</h4>
             <ul class="list-group list-group-flush py-3">
               <li class="list-group-item">free treatment frist 100 patient</li>
