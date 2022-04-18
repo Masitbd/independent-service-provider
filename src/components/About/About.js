@@ -5,11 +5,14 @@ import "./About.css";
 
 const About = () => {
   return (
-    <Container>
+    <Container className="my-5">
       <div className="text-center mt-3">
         <img src={User} alt="" />
       </div>
       <div className="mx-5">
+        <h1 className="text-success text-center mb-3">
+          My Current Status And Future Plans{" "}
+        </h1>
         <p>
           On a personal level, I am highly-motivated, result oriented,
           self-driven, hard-working, fast learner and constantly seeking to
