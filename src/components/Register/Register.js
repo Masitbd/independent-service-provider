@@ -17,12 +17,14 @@ const Register = () => {
   const inputName = useRef("");
   const inputEmail = useRef("");
   const inputPass = useRef("");
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [SignInWithGoogle, goolelUser, googleError] = useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, GithubError] = useSignInWithGithub(auth);
   const [signInWithFacebook, FacebookUser, FacebookError] =
     useSignInWithFacebook(auth);
+  let errorElement;
 
   const navigateRegister = () => {
     navigate("/login");
@@ -34,8 +36,13 @@ const Register = () => {
     const email = inputEmail.current.value;
     const password = inputPass.current.value;
     createUserWithEmailAndPassword(email, password);
-    // inputEmail.current.value = "";
+    setAgree(false);
   };
+  if (error || GithubError || FacebookError || googleError) {
+    errorElement = <p className="text-danger">Error: {error?.message}</p>;
+  } else {
+    errorElement = "";
+  }
 
   if (user) {
     navigate("/login");
@@ -59,6 +66,7 @@ const Register = () => {
             ref={inputEmail}
             type="email"
             placeholder="Enter email"
+            required
           />
         </Form.Group>
 
@@ -67,8 +75,10 @@ const Register = () => {
             ref={inputPass}
             type="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
+        {errorElement}
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
             className={agree ? "text-success" : "text-danger"}
@@ -77,9 +87,16 @@ const Register = () => {
             label="Accept terms and condition"
           />
         </Form.Group>
-        <Button className="px-4 mb-2" variant="primary" type="submit">
+
+        <Button
+          disabled={!agree}
+          className="px-4 mb-2"
+          variant="primary"
+          type="submit"
+        >
           Register
         </Button>
+
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <div className="d-flex">
             <Form.Text>Already registered user?</Form.Text>

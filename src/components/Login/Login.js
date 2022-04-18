@@ -24,6 +24,8 @@ const Login = () => {
     useSignInWithFacebook(auth);
   const location = useLocation();
 
+  let errorElement;
+
   let from = location.state?.from?.pathname || "/";
 
   const navigateRegister = () => {
@@ -33,7 +35,13 @@ const Login = () => {
     e.preventDefault();
     const email = inputEmail.current.value;
     const password = inputPass.current.value;
-    signInWithEmailAndPassword(auth, email, password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
 
     // inputEmail.current.value = "";
   };
@@ -47,6 +55,10 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
+  if (GithubError || FacebookError || googleError) {
+    errorElement = <p className="text-danger">Error: {error?.message}</p>;
+  }
+
   return (
     <Container className="w-50 mx-auto my-5 p-3 login-container">
       <Form onSubmit={handleSubmit}>
@@ -56,6 +68,7 @@ const Login = () => {
             ref={inputEmail}
             type="email"
             placeholder="Enter email"
+            required
           />
         </Form.Group>
 
@@ -64,6 +77,7 @@ const Login = () => {
             ref={inputPass}
             type="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -73,6 +87,7 @@ const Login = () => {
         <Button className="px-4 mb-2" variant="primary" type="submit">
           Login
         </Button>
+
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <div className="d-flex">
             <Form.Text>New to Anne Sofie's clinic?</Form.Text>
