@@ -3,7 +3,6 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import "./Login.css";
 import { useRef } from "react";
-import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../firebase.init";

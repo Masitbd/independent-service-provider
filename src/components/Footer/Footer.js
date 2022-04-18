@@ -40,22 +40,24 @@ const Footer = () => {
 
           <Col md={12} lg={4}>
             <h4 className="text-success">Our services</h4>
-            <ul class="list-group list-group-flush py-3">
-              <li class="list-group-item">Transplants</li>
-              <li class="list-group-item">Gastroenterology</li>
-              <li class="list-group-item">Orthopaedics</li>
-              <li class="list-group-item">Spine Care</li>
-              <li class="list-group-item">Cancer Care</li>
+            <ul className="list-group list-group-flush py-3">
+              <li className="list-group-item">Transplants</li>
+              <li className="list-group-item">Gastroenterology</li>
+              <li className="list-group-item">Orthopaedics</li>
+              <li className="list-group-item">Spine Care</li>
+              <li className="list-group-item">Cancer Care</li>
             </ul>
           </Col>
           <Col md={12} lg={4}>
             <h4 className="text-success">Our future plan</h4>
-            <ul class="list-group list-group-flush py-3">
-              <li class="list-group-item">free treatment frist 100 patient</li>
-              <li class="list-group-item">Free medicine up to 200kr</li>
-              <li class="list-group-item">Discount for poor patient</li>
-              <li class="list-group-item">Discount for test</li>
-              <li class="list-group-item">Free healthcare tips</li>
+            <ul className="list-group list-group-flush py-3">
+              <li className="list-group-item">
+                free treatment frist 100 patient
+              </li>
+              <li className="list-group-item">Free medicine up to 200kr</li>
+              <li className="list-group-item">Discount for poor patient</li>
+              <li className="list-group-item">Discount for test</li>
+              <li className="list-group-item">Free healthcare tips</li>
             </ul>
           </Col>
         </Row>
