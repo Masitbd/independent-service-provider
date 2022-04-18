@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 import "./Login.css";
 import { useRef } from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../firebase.init";
 import {
@@ -23,6 +23,10 @@ const Login = () => {
   const [signInWithGithub, githubUser, GithubError] = useSignInWithGithub(auth);
   const [signInWithFacebook, FacebookUser, FacebookError] =
     useSignInWithFacebook(auth);
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
   const navigateRegister = () => {
     navigate("/register");
   };
@@ -36,6 +40,12 @@ const Login = () => {
   };
   if (goolelUser || githubUser || FacebookUser) {
     navigate("/");
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user) {
+    navigate(from, { replace: true });
   }
 
   return (

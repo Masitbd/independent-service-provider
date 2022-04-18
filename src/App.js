@@ -9,6 +9,8 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ServiceDetail from "./components/ServiceDetail.js/ServiceDetail";
 import Register from "./components/Register/Register";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -19,9 +21,17 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/About" element={<About />} />
-        <Route path="/servicedetail/:serviceid" element={<ServiceDetail />} />
+        <Route
+          path="/servicedetail/:serviceid"
+          element={
+            <RequireAuth>
+              <ServiceDetail />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       {<Footer />}
     </div>
